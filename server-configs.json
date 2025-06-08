@@ -1,0 +1,24 @@
+{
+  "mcpServers": {
+    "shell-server-uv": {
+      "command": "uv",
+      "args": ["run", "python", "main.py"],
+      "cwd": ".",
+      "env": {}
+    },
+    "shell-server-python": {
+      "command": "python",
+      "args": ["main.py"],
+      "cwd": ".",
+      "env": {
+        "PYTHONPATH": "."
+      }
+    },
+    "shell-server-venv": {
+      "command": "./.venv/bin/python",
+      "args": ["main.py"],
+      "cwd": ".",
+      "env": {}
+    }
+  }
+} 

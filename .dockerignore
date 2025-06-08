@@ -1,0 +1,43 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+.Python
+.venv
+venv/
+.env
+
+# uv cache
+.uv
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Documentation
+README.md
+*.md
+
+# Docker
+Dockerfile
+.dockerignore
+
+# MCP config files (these are for local development)
+mcp-server-config.json
+server-configs.json
+claude-desktop-config.json
+
+# Test files
+test_*.py
+*_test.py 
