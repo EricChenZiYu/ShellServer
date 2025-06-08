@@ -18,8 +18,22 @@ def desktop_test_js() -> str:
         The content of test.js file from desktop
     """
     try:
-        # Get the desktop path
-        desktop_path = Path.home() / "Desktop"
+        # Check multiple possible desktop paths (local vs Docker)
+        possible_paths = [
+            Path.home() / "Desktop",  # Local environment
+            Path("/app/host-desktop"),  # Docker with volume mount
+            Path("/Users/xingjiabin/Desktop")  # Absolute path fallback
+        ]
+        
+        desktop_path = None
+        for path in possible_paths:
+            if path.exists():
+                desktop_path = path
+                break
+        
+        if desktop_path is None:
+            return f"Error: Desktop directory not found. Checked paths: {[str(p) for p in possible_paths]}"
+        
         test_js_path = desktop_path / "test.js"
         
         # Check if the file exists
@@ -44,9 +58,21 @@ def desktop_files() -> list[str]:
         List of file names in the desktop directory
     """
     try:
-        desktop_path = Path.home() / "Desktop"
-        if not desktop_path.exists():
-            return ["Error: Desktop directory not found"]
+        # Check multiple possible desktop paths (local vs Docker)
+        possible_paths = [
+            Path.home() / "Desktop",  # Local environment
+            Path("/app/host-desktop"),  # Docker with volume mount
+            Path("/Users/xingjiabin/Desktop")  # Absolute path fallback
+        ]
+        
+        desktop_path = None
+        for path in possible_paths:
+            if path.exists():
+                desktop_path = path
+                break
+        
+        if desktop_path is None:
+            return [f"Error: Desktop directory not found. Checked paths: {[str(p) for p in possible_paths]}"]
         
         # Get all files (not directories) in desktop
         files = [f.name for f in desktop_path.iterdir() if f.is_file()]

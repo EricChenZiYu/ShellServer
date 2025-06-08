@@ -3,16 +3,16 @@
     "shell-server": {
       "command": "uv",
       "args": ["run", "python", "main.py"],
-      "cwd": ".",
+      "cwd": "/Users/xingjiabin/Documents/dev_env/mcp/mcp_servers/ShellServer",
       "env": {}
     },
     "shell": {
       "command": "uv",
       "args": ["--directory","/Users/xingjiabin/Documents/dev_env/mcp/mcp_servers/ShellServer","run", "main.py"]
     },
-    "docker-shell": {
+    "shell-server-docker": {
       "command": "docker",
-      "args": ["run","-i","--rm","--init","-e","DOCKER_CONTAINER=true","shellserver-app"]
+      "args": ["run", "--rm", "-i","--init","-e","DOCKER_CONTAINER=true", "-v", "/Users/xingjiabin/Desktop:/app/host-desktop", "shellserver-app"]
     }
   }
 }
